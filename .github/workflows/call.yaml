@@ -22,14 +22,13 @@ jobs:
               curl -L \
                 -H "Accept: application/vnd.github+json" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
-                -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
-                https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/attempts/${GITHUB_RUN_ATTEMPT}/jobs | jq .jobs[].id >> xyz.txt 
-            
+                 https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/attempts/${GITHUB_RUN_ATTEMPT}/jobs | jq .jobs[].id >> xyz.txt 
+             
               echo "API URL : https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/attempts/${GITHUB_RUN_ATTEMPT}/jobs" >> $GITHUB_STEP_SUMMARY 
               # cat xyz.txt >> $GITHUB_STEP_SUMMARY
               # ls -lrt  >> $GITHUB_STEP_SUMMARY
               echo "owner and repo: ${GITHUB_REPOSITORY}" >> $GITHUB_STEP_SUMMARY
-            
+             
               # echo "|Step number | Step Name | Step Status |" >> $GITHUB_STEP_SUMMARY
               # echo "| -------- | -------- | ------- |" >> $GITHUB_STEP_SUMMARY
               for i in `cat xyz.txt`;
@@ -37,7 +36,6 @@ jobs:
                 curl -L \
                   -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
                   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/jobs/$i" > abc.json
                 
                 echo "### Job Status " >> $GITHUB_STEP_SUMMARY
@@ -45,7 +43,6 @@ jobs:
                 # echo
                 echo "|Step number | Step Name | Step Status |" >> $GITHUB_STEP_SUMMARY
                 echo "| -------- | -------- | ------- |" >> $GITHUB_STEP_SUMMARY
-
                 jq -c '.steps | map(.) | .[]' abc.json | while read siteJSON;
                 do 
                   name=$(echo $siteJSON | jq -r .name) 

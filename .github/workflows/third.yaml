@@ -1,0 +1,11 @@
+name: dummy
+on: workflow_call
+jobs:   
+   job-one:
+     runs-on: ubuntu-latest
+     steps:
+        - name: Hello Third
+          run: echo "hello "
+
+        - name: World
+          run: echo "world"

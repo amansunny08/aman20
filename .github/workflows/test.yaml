@@ -1,5 +1,14 @@
 name: workflow call
 on: push
 jobs:
-   call_workflow:
-      uses: ./.github/workflows/call.yaml
+   dummy_workflow:
+     runs-on: ubuntu-latest
+     steps:
+     - name: hello world
+       run: echo "hello world"
+       
+     - name: run dummy job
+       uses: ./.github/workflows/third.yaml
+
+     - name: run summary job 
+       uses: ./.github/workflows/call.yaml

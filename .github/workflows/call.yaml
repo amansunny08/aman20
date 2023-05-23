@@ -1,5 +1,5 @@
 name: red
-on: push
+on: workflow_call
 jobs:   
    job-zero:
      runs-on: ubuntu-latest

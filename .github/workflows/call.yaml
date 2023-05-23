@@ -38,7 +38,6 @@ jobs:
                 
                 echo "### ${GITHUB_WORKFLOW}" >> $GITHUB_STEP_SUMMARY
                 # echo "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/jobs/$i" >> $GITHUB_STEP_SUMMARY
-
                 echo "|Step number | Step Name | Step Status |" >> $GITHUB_STEP_SUMMARY
                 echo "| -------- | -------- | ------- |" >> $GITHUB_STEP_SUMMARY
                 jq -c '.steps | map(.) | .[]' abc.json | while read siteJSON;

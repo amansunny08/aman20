@@ -20,30 +20,10 @@ jobs:
                 ref: "main",
                 workflow_id: "dispatch.yaml",
                 });
-    #       curl \
-    #         -X POST \
-    #         -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
-    #         -H "Accept: application/vnd.github.v3+json" \
-    #         "https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch_test/dispatches" 
 
    dummy_Third_workflow1:
       needs: dummy_workflow
-      uses: ./.github/workflows/third.yaml
-
-  #  Dummy_workflow_dispatch:
-  #     needs: dummy_Third_workflow1
-  #     uses: actions/github-script@v6
-  #     with:
-  #        github-token: ${{ secrets.GH_TOKEN }}
-  #        script: |
-  #            github.rest.actions.createWorkflowDispatch({
-  #               owner: context.repo.owner,
-  #               repo: "dispatch_tes",
-  #               ref: "main",
-  #               workflow_id: "dispatch.yaml"
-  #               })
-
-      
+      uses: ./.github/workflows/third.yaml     
 
    summary_job: 
       needs: dummy_Third_workflow1

@@ -49,6 +49,4 @@ jobs:
                   complete_at=$(echo $siteJSON | jq -r .completed_at)
                   echo "| $number | $name | $status |" >> $GITHUB_STEP_SUMMARY
                 done
-                echo 
-                echo
               done  

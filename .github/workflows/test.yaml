@@ -6,9 +6,11 @@ jobs:
      steps:
      - name: hello world
        run: echo "hello world"
-       
-     - name: run dummy job
-       uses: ./.github/workflows/third.yaml
 
-     - name: run summary job 
-       uses: ./.github/workflows/call.yaml
+    dummy_Third_workflow1:
+      needs: dummy_workflow
+      uses: ./.github/workflows/third.yaml
+
+    summary_job: 
+      needs: dummy_Third_workflow1
+      uses: ./.github/workflows/call.yaml

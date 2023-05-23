@@ -12,14 +12,14 @@ jobs:
       - name: dummy_dispatch 
         uses: actions/github-script@v6
         with:
-          github-token: "${{ secrets.GH_TOKEN }}"
+          github-token: ${{ secrets.GH_TOKEN }}
           script: |
               github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: "dispatch_test",
                 ref: "main",
-                workflow_id: "dispatch.yaml",
-                });
+                workflow_id: "dispatch.yaml"
+                })
     #       curl \
     #         -X POST \
     #         -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \

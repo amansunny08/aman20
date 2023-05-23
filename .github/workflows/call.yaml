@@ -22,6 +22,7 @@ jobs:
               curl -L \
                 -H "Accept: application/vnd.github+json" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
+                -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
                 https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/attempts/${GITHUB_RUN_ATTEMPT}/jobs | jq .jobs[].id >> xyz.txt 
             
               # cat xyz.txt >> $GITHUB_STEP_SUMMARY
@@ -34,6 +35,7 @@ jobs:
                 curl -L \
                   -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
+                  -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
                   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/jobs/$i" > abc.json
                 
                 echo "### ${GITHUB_RUN_ID}" >> $GITHUB_STEP_SUMMARY

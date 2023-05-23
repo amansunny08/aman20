@@ -2,4 +2,4 @@ name: workflow call
 on: push
 jobs:
    call_workflow:
-      uses: .github/workflows/call.yaml
+      uses: ./.github/workflows/call.yaml

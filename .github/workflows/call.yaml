@@ -1,45 +1,20 @@
 name: red
 on: workflow_call
-jobs:   
-   job-zero:
-     runs-on: ubuntu-latest
-     steps:
-        - name: aarush
-          run: echo "hello Aarush"
-
-        - name: aadhya
-          run: echo "Hello Aadhya"  
-        
-   find_job_id:
-       needs: job-zero
-       outputs:
-          output1: ${{ steps.job-id.outputs.test }}
-       runs-on: ubuntu-latest
-       steps:
-         - name: job-id
-           id: set-matrix
-           run: echo "hello zeor"
-
-         - name: aarush
-           run: echo "hello aarush"  
-              
-
+jobs:                
    first-job:
-      needs: find_job_id
       runs-on: ubuntu-latest
       steps:
-         - name: step Hello
-           run: echo "Hello"
-
-         - name: step world
+         - name: Print workflow name 
            run: |
-             echo "world" 
-         - name: step 3
+              echo "Name of the workflow: ${GITHUB_WORKFLOW}" >> $GITHUB_STEP_SUMMARY
+
+         - name: print branch name
+           run: |
+             echo "Branch name: https://github.com/repos/${GITHUB_REPOSITORY}/tree/${GITHUB_REF} >> $GITHUB_STEP_SUMMARY
+
+         - name: skipp step
            if: ( 'a' == 'b')
            run: echo "Hello aman"    
-
-         - name: step 4 
-           run:  echo "Hello aman"
 
          - name: print run id and data
            run: |

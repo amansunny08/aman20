@@ -4,8 +4,8 @@ jobs:
    job-one:
      runs-on: ubuntu-latest
      steps:
-        - name: Hello Third
+        - name:  Dummy step Third
           run: echo "hello "
 
-        - name: World
+        - name: dummy step World
           run: echo "world"

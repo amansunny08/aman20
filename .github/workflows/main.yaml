@@ -10,17 +10,17 @@ jobs:
             echo " Dispatch URL: https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch_test/dispatches"  >> $GITHUB_STEP_SUMMARY
 
       - name: dummy_dispatch 
-        uses: actions/github-script@v4
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
-              const { data } = await octokit.actions.createWorkflowDispatch({
+              github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: "dispatch_test",
                 ref: "main",
                 workflow_id: "dispatch.yaml",
                 });
-              console.log(`Workflow URL: ${data.html_url}`);  
+                
 
       # - name: get dispatch result
       #   run: |

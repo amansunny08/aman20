@@ -9,17 +9,29 @@ jobs:
             echo "hello world"
             echo " Dispatch URL: https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch_test/dispatches"  >> $GITHUB_STEP_SUMMARY
 
-      - name: dummy_dispatch 
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          script: |
-              github.rest.actions.createWorkflowDispatch({
-                owner: context.repo.owner,
-                repo: "dispatch_test",
-                ref: "main",
-                workflow_id: "dispatch.yaml",
-                });
+      # - name: dummy_dispatch 
+      #   uses: actions/github-script@v6
+      #   with:
+      #     github-token: ${{ secrets.GH_TOKEN }}
+      #     script: |
+      #         github.rest.actions.createWorkflowDispatch({
+      #           owner: context.repo.owner,
+      #           repo: "dispatch_test",
+      #           ref: "main",
+      #           workflow_id: "dispatch.yaml",
+      #           });
+
+      - name: get dispatch result
+        run: |
+           curl -X POST \
+            -H "Authorization: ${{ secrets.GH_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"ref":"YOUR_BRANCH_NAME"}' \
+            https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch.yaml/dispatches
+
+          #  curl -X GET \
+          #     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+          #     https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/actions/runs/YOUR_WORKFLOW_RUN_ID
 
    dummy_Third_workflow1:
       needs: dummy_workflow

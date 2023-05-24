@@ -23,8 +23,8 @@ jobs:
 
    dummy_Third_workflow1:
       needs: dummy_workflow
-      uses: ./.github/workflows/third.yaml     
+      uses: ./.github/workflows/call_workflow.yaml     
 
    summary_job: 
       needs: dummy_Third_workflow1
-      uses: ./.github/workflows/call.yaml
+      uses: ./.github/workflows/summary.yaml

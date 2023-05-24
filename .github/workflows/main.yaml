@@ -34,9 +34,9 @@ jobs:
            
            curl -X GET \
             -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
-            https://api.github.com/repos/amansunny08/dispatch_test/actions/runs/5069590586/jobs/9103421380 >> $GITHUB_STEP_SUMMARY
-
-
+             https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/58051774   >> $GITHUB_STEP_SUMMARY
+              
+          # # https://api.github.com/repos/amansunny08/dispatch_test/actions/runs/5069590586 >> $GITHUB_STEP_SUMMARY
           #  curl -X POST \
           #   -H "Authorization: ${{ secrets.GH_TOKEN }}" \
           #   -H "Content-Type: application/json" \

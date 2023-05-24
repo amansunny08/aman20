@@ -14,7 +14,7 @@ jobs:
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
-              github.rest.actions.createWorkflowDispatch({
+              const { data } = await github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: "dispatch_test",
                 ref: "main",

@@ -10,7 +10,7 @@ jobs:
             echo " Dispatch URL: https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch_test/dispatches"  >> $GITHUB_STEP_SUMMARY
            
             curl -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
-                https://api.github.com/repos/amansunny08/dispatch_test/actions/runs/5079111026 >> $GITHUB_STEP_SUMMARY
+                https://api.github.com/repos/amansunny08/dispatch_test/actions/runs/5079111026 | jq '.html_url' >> $GITHUB_STEP_SUMMARY
  
       # - name: dummy_dispatch 
       #   uses: actions/github-script@v6

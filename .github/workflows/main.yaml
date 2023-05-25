@@ -41,8 +41,9 @@ jobs:
                        }
                 }'
 
+           sleep 30
            delta_created_time=5
-           run_date_filter=$(date -u -d "-${delta_created_time} minutes" +%Y-%m-%dT%H:%M)
+           run_date_filter=$(date -u -d "-${delta_created_time} minutes" +%Y-%m-%dT%H:%M) 
            curl -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
                 https://api.github.com/repos/amansunny08/dispatch_test/actions/runs?created=>$run_date_filter  >> $GITHUB_STEP_SUMMARY   
           #  run_id=$(echo "$ID" | jq -r '.id')

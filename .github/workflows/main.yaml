@@ -7,7 +7,7 @@ jobs:
       - name: Test
         run: |
             echo "hello world"
-            echo " Dispatch URL: https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch_test/dispatches"  >> $GITHUB_STEP_SUMMARY
+            # echo " Dispatch URL: https://api.github.com/repos/amansunny08/dispatch_test/actions/workflows/dispatch_test/dispatches"  >> $GITHUB_STEP_SUMMARY
            
             curl -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
                 https://api.github.com/repos/amansunny08/dispatch_test/actions/runs/5079111026 | jq '.html_url' >> $GITHUB_STEP_SUMMARY
